@@ -1,0 +1,26 @@
+{
+  "name": "camolate_backend",
+  "version": "0.0.1",
+  "description": "TBA",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMeanMachine/camolate_backend.git"
+  },
+  "author": "A.M.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheMeanMachine/camolate_backend/issues"
+  },
+  "homepage": "https://github.com/TheMeanMachine/camolate_backend#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0"
+  }
+}
