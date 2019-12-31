@@ -87,40 +87,51 @@ const data = {
         }
     ],
     list_user_category:[
-        {
-            categoryID: 
-            userID: this.category[this.indexObjInArray_byName(this").]
-        }
-    ]
+    ],
     snacks:[
         {
             name: "Apple",
-            categoryID: this.indexObjInArray_byName(this.category, "Fresh Fruit")
+            //categoryID: indexObjInArray_byName(this.category, "Fresh Fruit")
         }
     ],
-
-    associateAuthors = () => {
-        for(let i = 0; i < this.category.size(); i++){
-            const category = this.category[i];
-            if(category.published === 1) return;
-            this.list_user_category.push({
-                categoryID:  i + 1,
-                userID: category.authorID
-            });
-        }
-    },
-    /**
-     * Searches array of objects for attribute 'name'
-     * @param  {array} array_of_obj Array of objects with name attributes
-     * @param  {string} name of object to find
-     * @return {int} index of obj in array, -1 if not found
-     */
-    indexObjInArray_byName = (array_of_obj, name) => {
-        for(let i = 0; i < array_of_obj.size(); i++) (array_of_obj[0].name === name) ? return i : null;
-        return -1;
-    },
+    associateAuthors : () => {
+        associateAuthorsTo(this.categories, this.list_user_category);
+    }
 }
 
-exports.mockData = await () => {
+
+
+/**
+ * Associates authors to their publication - if published, there will be no association
+ * database ID is taken as the index of the element + 1
+ * @param  {array} listToCheck array of object with attributes author & published
+ * @param  {array} listToAddTo array to list the associations
+ */
+const associateAuthorsTo = (listToCheck, listToAddTo) => {
+    for(let i = 0; i < listToCheck.size(); i++){
+        const obj = listToCheck[i];
+        if(obj.published === 1) return;//if published, don't associate
+        const name = Object.keys({listToAddTo})[0];
+        listToAddTo.push({
+            name :  i + 1,
+            userID: category.authorID
+        });
+    }
+}
+
+/**
+ * Searches array of objects for attribute 'name'
+ * @param  {array} array_of_obj Array of objects with name attributes
+ * @param  {string} name of object to find
+ * @return {int} index of obj in array, -1 if not found
+ */
+const indexObjInArray_byName = (array_of_obj, name) => {
+    for(let i = 0; i < array_of_obj.size(); i++){
+        if(array_of_obj[0].name === name) return i
+    }
+    return -1;
+}
+
+exports.mockData = async () => {
 
 }
