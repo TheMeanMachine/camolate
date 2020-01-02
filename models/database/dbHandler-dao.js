@@ -205,7 +205,7 @@ exports.createTables = async() => {
  */
 const arrayOfQueries = async (array, connection) => {
 	try {
-		for(let i = 0; i < array.size(); i++){
+		for(let i = 0; i < array.length; i++){
 			await connection.query(array[i]);
 		}
 	}catch (error) {
