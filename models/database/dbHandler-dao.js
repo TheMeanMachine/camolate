@@ -184,10 +184,10 @@ exports.createTables = async() => {
 
         };
 		//Run tables queries
-		for(const key of Object.keys(sql.tables)) await arrayOfQueries(sql.tables.key, connection);
+		for(const key of Object.keys(sql.tables)) await arrayOfQueries(sql.tables[key], connection);
         
 		//Run constraint queries
-		for(const key of Object.keys(sql.constraints)) await arrayOfQueries(sql.constraints.key, connection);
+		for(const key of Object.keys(sql.constraints)) await arrayOfQueries(sql.constraints[key], connection);
 
 		return {message:"created successfully"};
 
