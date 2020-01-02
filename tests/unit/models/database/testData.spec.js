@@ -1,5 +1,5 @@
 const testModel = require('../../../../models/database/testData');
-const testDB = require('../../../../tests/prepareTestDB');
+const testDB = require('../../../prepareTestDB');
 
 beforeEach(async done => {
 	testDB.prepareTestDB();
