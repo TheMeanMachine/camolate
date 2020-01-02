@@ -25,19 +25,22 @@ const setTestConfig = () => {
 		});
 }
 
-exports.setTestDatabase = async () => {
-	setTestConfig();
-	
-	const info = require("../config");
-	console.log(info);
-	const connectionNoDB = await mysql.createConnection({host: info.database.host, user: info.database.user, password: info.database.password});
-	const dropDatabase = "DROP DATABASE IF EXISTS `"+ info.database.database + "`";
-	await connectionNoDB.query(dropDatabase);
+exports.prepareTestDatabase = async() => {
+	try{
+		setTestConfig();
+		
+		const info = require("../config");
+		const connectionNoDB = await mysql.createConnection({host: info.database.host, user: info.database.user, password: info.database.password});
+		const dropDatabase = "DROP DATABASE IF EXISTS `"+ info.database.database + "`";
+		await connectionNoDB.query(dropDatabase);
 
-	const createDatabase = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
-	await connectionNoDB.query(createDatabase);
+		const createDatabase = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
+		await connectionNoDB.query(createDatabase);
 
-	await database.createTables();
+		await database.createTables();
+	}catch(e){
+		throw e;
+	}
 }
 
 exports.clear = () => {
