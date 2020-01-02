@@ -12,7 +12,8 @@ const testInfo = require("./config");
  */
 const joinObjects = (obj1, obj2) => {
 	const result = {};
-	for(key of Object.keys(obj1)) result.key = obj2.key || obj1.key;
+	for(let key of Object.keys(obj1)) result[key] = obj2[key] || obj1[key];
+	
 	return result;
 };
 
