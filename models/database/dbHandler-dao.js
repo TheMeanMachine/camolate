@@ -16,7 +16,7 @@ exports.createTables = async() => {
 
 		await connectionNoDB.query(databaseSql);
 
-		const connection = await mysql.createConnection(info.config);
+		const connection = await mysql.createConnection(info.database);
 
 		const sql =
         {
