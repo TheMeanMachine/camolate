@@ -1,6 +1,6 @@
 const mysql = require("promise-mysql");
-const database = require("../../../../models/database/dbHandler-dao.js");
-const testInfo = require("config");
+const database = require("../models/database/dbHandler-dao.js");
+const testInfo = require("./config");
 
 /**
  * Takes two objects and replaces obj1 values with obj2 if set
