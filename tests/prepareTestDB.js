@@ -21,8 +21,7 @@ const setTestConfig = () => {
 	const testInfoOverridden = joinObjects(info.database, testInfo.database);
 	jest
 		.doMock('../config', () => {
-
-			return testInfoOverridden;
+			return {database: testInfoOverridden};;
 		});
 }
 
