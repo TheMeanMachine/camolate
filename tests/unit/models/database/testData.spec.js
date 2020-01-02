@@ -1,3 +1,4 @@
+'use strict'
 const testModel = require('../../../../models/database/testData');
 const testDB = require('../../../prepareTestDB');
 
