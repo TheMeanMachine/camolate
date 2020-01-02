@@ -1,5 +1,5 @@
 var mysql = require("promise-mysql");
-var info = require("../config");
+var info = require("../../config");
 
 exports.adminConsole = async() => {
     
