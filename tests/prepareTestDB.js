@@ -1,3 +1,5 @@
+'use strict'
+
 const mysql = require("promise-mysql");
 const database = require("../models/database/dbHandler-dao.js");
 const testInfo = require("./config");
@@ -8,15 +10,15 @@ const testInfo = require("./config");
  * @param  {Object} obj2
  * @return {Object} new object with overriden values
  */
-joinObjects = (obj1, obj2) => {
+const joinObjects = (obj1, obj2) => {
 	const result = {};
 	for(key of Object.keys(obj1)) result.key = obj2.key || obj1.key;
 	return result;
 };
 
-setTestConfig = () => {
+const setTestConfig = () => {
 	const info = require("../config");
-	testInfoOverridden = joinObjects(testInfo, info);
+	const testInfoOverridden = joinObjects(info.database, testInfo.database);
 	jest
 		.doMock('../config', () => {
 
