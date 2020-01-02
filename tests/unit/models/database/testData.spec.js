@@ -1,9 +1,10 @@
 'use strict'
+
 const testModel = require('../../../../models/database/testData');
 const testDB = require('../../../prepareTestDB');
 
 beforeEach(async done => {
-	testDB.prepareTestDB();
+	await testDB.prepareTestDatabase();
 	done();
 });
 
@@ -11,9 +12,10 @@ afterEach(() => {
 	testDB.clear();
 });
 
-describe('associateAuthorsTo', async () => {
+describe('associateAuthorsTo', () => {
+
 	test('Valid inputs, no published elements', async done => {
-		const test = await new testModel();
+		
 		const category = [
 			{
 	            name: "Dried Fruit",
@@ -35,7 +37,7 @@ describe('associateAuthorsTo', async () => {
 	        },
 		]
 		const listToAddTo = []
-		test.data.associateAuthorsTo(category, listToAddTo);
+		//testModel.associateAuthorsTo(category, listToAddTo);
 
 		expect(listToAddTo).toEqual([
 			{
