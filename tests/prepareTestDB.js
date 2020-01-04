@@ -1,7 +1,6 @@
 'use strict'
 
 const mysql = require("promise-mysql");
-const database = require("../models/database/dbHandler-dao.js");
 const testInfo = require("./config");
 
 /**
@@ -37,7 +36,8 @@ exports.prepareTestDatabase = async() => {
 
 		const createDatabase = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
 		await connectionNoDB.query(createDatabase);
-
+		
+		const database = require("../models/database/dbHandler-dao.js");//loaded after mock
 		await database.createTables();
 	}catch(e){
 		throw e;
