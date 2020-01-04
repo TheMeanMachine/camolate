@@ -1,5 +1,5 @@
 var mysql = require("promise-mysql");
-var info = require("../config");
+var info = require("../../config");
 
 exports.adminConsole = async() => {
     
@@ -16,7 +16,7 @@ exports.createTables = async() => {
 
 		await connectionNoDB.query(databaseSql);
 
-		const connection = await mysql.createConnection(info.config);
+		const connection = await mysql.createConnection(info.database);
 
 		const sql =
         {
@@ -184,10 +184,10 @@ exports.createTables = async() => {
 
         };
 		//Run tables queries
-		for(const key of Object.keys(sql.tables)) await arrayOfQueries(sql.tables.key, connection);
+		for(const key of Object.keys(sql.tables)) await arrayOfQueries(sql.tables[key], connection);
         
 		//Run constraint queries
-		for(const key of Object.keys(sql.constraints)) await arrayOfQueries(sql.constraints.key, connection);
+		for(const key of Object.keys(sql.constraints)) await arrayOfQueries(sql.constraints[key], connection);
 
 		return {message:"created successfully"};
 
@@ -205,7 +205,7 @@ exports.createTables = async() => {
  */
 const arrayOfQueries = async (array, connection) => {
 	try {
-		for(let i = 0; i < array.size(); i++){
+		for(let i = 0; i < array.length; i++){
 			await connection.query(array[i]);
 		}
 	}catch (error) {
