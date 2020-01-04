@@ -107,15 +107,15 @@ const data = {
  * @param  {array} listToCheck array of object with attributes author & published
  * @param  {array} listToAddTo array to list the associations
  */
-const associateAuthorsTo = (listToCheck, listToAddTo) => {
-    for(let i = 0; i < listToCheck.size(); i++){
+exports.associateAuthorsTo = (listToCheck, listToAddTo, nameOfID) => {
         const obj = listToCheck[i];
         if(obj.published === 1) return;//if published, don't associate
         const name = Object.keys({listToAddTo})[0];
-        listToAddTo.push({
-            name :  i + 1,
-            userID: category.authorID
-        });
+        const itemToAdd = {
+            userID: obj.authorID
+        }
+        itemToAdd[nameOfID] = i + 1;
+        listToAddTo.push(itemToAdd);
     }
 }
 

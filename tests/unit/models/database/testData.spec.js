@@ -37,7 +37,7 @@ describe('associateAuthorsTo', () => {
 	        },
 		]
 		const listToAddTo = []
-		//testModel.associateAuthorsTo(category, listToAddTo);
+		testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
 
 		expect(listToAddTo).toEqual([
 			{
