@@ -15,13 +15,12 @@ const joinObjects = (obj1, obj2) => {
 	
 	return result;
 };
-
 const setTestConfig = () => {
 	const info = require("../config");
 	const testInfoOverridden = joinObjects(info.database, testInfo.database);
 	jest
 		.doMock('../config', () => {
-			return {database: testInfoOverridden};;
+			return {database: testInfoOverridden};
 		});
 }
 
