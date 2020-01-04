@@ -4,7 +4,7 @@
   "description": "TBA",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "./node_modules/.bin/jest --coverage 'tests/'"
   },
   "repository": {
     "type": "git",
