@@ -338,8 +338,9 @@ const getColumns = (obj) => {
 };
 
 const insertData = async (connection, table_name, data) => {
-	const columns = getColumns(data[0]);
+	
 	for(let dataSet of data){
+		const columns = getColumns(dataSet);
 		const sql = `
             INSERT INTO ${table_name}
             (${columns.toString()})
