@@ -1,16 +1,17 @@
-'use strict'
+"use strict";
 
 const testModel = require('../../../../models/database/testData');
 const testDB = require('../../../prepareTestDB');
 
-beforeEach(async done => {
-	await testDB.prepareTestDatabase();
-	done();
-});
+//Code for test database
+// beforeEach(async (done) => {
+// 	await testDB.prepareTestDatabase();
+// 	done();
+// });
 
-afterEach(() => {
-	testDB.clear();
-});
+// afterEach(() => {
+// 	testDB.clear();
+// });
 
 describe('associateAuthorsTo', () => {
 
@@ -57,4 +58,68 @@ describe('associateAuthorsTo', () => {
 		done();
 	})
 
+	test('Valid inputs, all published elements', async done => {
+		
+		const category = [
+			{
+				name: "Dried Fruit",
+	            published: 1,
+	            authorID: 2,
+	            levelID: 4//bad
+	        },
+	        {
+	            name: "Nuts",
+	            published: 1,
+	            authorID: 2,
+	            levelID: 1//fantastic
+	        },
+	        {
+	            name: "Chocolate",
+	            published: 1,
+	            authorID: 3,
+	            levelID: 5//terrible
+	        },
+		]
+		const listToAddTo = []
+		testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
+
+		expect(listToAddTo).toEqual([]);
+
+		done();
+	})
+
+
+	test('Valid inputs, some published elements', async done => {
+		
+		const category = [
+			{
+	            name: "Dried Fruit",
+	            published: 1,
+	            authorID: 2,
+	            levelID: 4//bad
+	        },
+	        {
+	            name: "Nuts",
+	            published: 1,
+	            authorID: 2,
+	            levelID: 1//fantastic
+	        },
+	        {
+	            name: "Chocolate",
+	            published: 0,
+	            authorID: 3,
+	            levelID: 5//terrible
+	        },
+		];
+		const listToAddTo = [];
+		testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
+
+		expect(listToAddTo).toEqual([
+			{
+				categoryID: 3,
+				userID: 3
+			}]);
+
+		done();
+	})
 })

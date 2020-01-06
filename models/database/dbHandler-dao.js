@@ -1,7 +1,6 @@
 "use strict";
 const mysql = require("promise-mysql");
 const info = require("../../config");
-const helpers = require("../../modules/databaseHelpers"); 
 
 exports.adminConsole = async() => {
 	
@@ -57,7 +56,6 @@ exports.createTables = async() => {
 					ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 					goalID int NOT NULL,
 					userID int NOT NULL,
-					date datetime NOT NULL
 					);
 				`,`
 				CREATE TABLE IF NOT EXISTS snack_entry(
@@ -214,3 +212,22 @@ exports.createTables = async() => {
 
 };
 
+/**
+ * Takes array of SQL queries and queries the db
+ * @author A.M.
+ * @param  {Array} array - A list of SQL queries
+ * @param {mySQL connection} connection - MySQL connection object
+ * @return {void}
+ */
+const arrayOfQueries = async (array, connection) => {
+	try {
+		for(let i = 0; i < array.length; i++){
+            await connection.query(array[i]);
+		}
+
+        return {message:"queried successfully"};
+	}catch (error) {
+		throw error;
+	}
+
+};
