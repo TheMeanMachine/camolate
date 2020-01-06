@@ -86,18 +86,140 @@ const data = {
             levelID: 5//Terrible
         }
     ],
-    list_user_category:[
-    ],
-    snacks:[
+    snack:[
         {
             name: "Apple",
-            //categoryID: indexObjInArray_byName(this.category, "Fresh Fruit")
+            categoryID: 1,
+            authorID: 1,
+            published: 1
+        },
+        {
+            name: "Banana",
+            categoryID: 1,
+            authorID: 2,
+            published: 0
+        },
+        {
+            name: "Creme Egg",
+            categoryID: 4,
+            authorID: 3,
+            published: 1
+        },
+        {
+            name: "Elcair",
+            categoryID: 10,
+            authorID: 1,
+            published: 1
+        },
+        {
+            name: "Salt and vinegar crisps",
+            categoryID: 8,
+            authorID: 1,
+            published: 0
         }
     ],
-    associateAuthors : () => {
-        associateAuthorsTo(this.categories, this.list_user_category);
-    }
-}
+    goal: [
+        {
+            name: "Doing alright",
+            authorID: 1,
+            published: 1
+        },
+        {
+            name: "I like to snack, okay?",
+            authorID: 2,
+            published: 0
+        },
+        {
+            name: "Healthy life",
+            authorID: 3,
+            published: 1
+        }
+    ],
+    goal_level: [
+        {//goal 1
+            goalID: 1,
+            levelID: 1,
+            amount: 2
+        },
+        {
+            goalID: 1,
+            levelID: 2,
+            amount: 1
+        },
+        {
+            goalID: 1,
+            levelID: 3,
+            amount: 0
+        },
+        {
+            goalID: 1,
+            levelID: 4,
+            amount: 0
+        },
+        {
+            goalID: 1,
+            levelID: 5,
+            amount: 0
+        },
+        {//goal 2
+            goalID: 2,
+            levelID: 1,
+            amount: 0
+        },
+        {
+            goalID: 2,
+            levelID: 2,
+            amount: 1
+        },
+        {
+            goalID: 2,
+            levelID: 3,
+            amount: 1
+        },
+        {
+            goalID: 2,
+            levelID: 4,
+            amount: 0
+        },
+        {
+            goalID: 2,
+            levelID: 5,
+            amount: 3
+        },
+        {//goal 3
+            goalID: 3,
+            levelID: 1,
+            amount: 1
+        },
+        {
+            goalID: 3,
+            levelID: 2,
+            amount: 0
+        },
+        {
+            goalID: 3,
+            levelID: 3,
+            amount: 1
+        },
+        {
+            goalID: 3,
+            levelID: 4,
+            amount: 0
+        },
+        {
+            goalID: 3,
+            levelID: 5,
+            amount: 1
+        }
+    ],
+    entry: [
+        {
+            goalID: 1,
+            userID: 1,
+            date: ""
+        }
+    ]
+};
 
 
 
