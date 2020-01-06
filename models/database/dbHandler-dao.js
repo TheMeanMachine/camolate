@@ -15,6 +15,7 @@ exports.createTables = async() => {
 		const databaseSql = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
 
 		await connectionNoDB.query(databaseSql);
+        connectionNoDB.end(); //Close the connection
 
 		const connection = await mysql.createConnection(info.database);
 
@@ -203,6 +204,8 @@ exports.createTables = async() => {
         
 		//Run constraint queries
 		for(let key of Object.keys(sql.constraints)) await arrayOfQueries(sql.constraints[key], connection);
+
+        connection.end();
 
 		return {message:"created successfully"};
 

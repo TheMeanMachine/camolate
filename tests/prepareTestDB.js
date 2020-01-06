@@ -35,6 +35,8 @@ exports.prepareTestDatabase = async() => {
 
 		const createDatabase = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
 		await connectionNoDB.query(createDatabase);
+
+		connectionNoDB.end(); //Close the connection
 		
 		const database = require("../models/database/dbHandler-dao.js");//loaded after mock
 		await database.createTables();
