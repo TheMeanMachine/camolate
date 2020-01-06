@@ -40,6 +40,8 @@ exports.prepareTestDatabase = async() => {
 		
 		const database = require("../models/database/dbHandler-dao.js");//loaded after mock
 		await database.createTables();
+
+		return;
 	}catch(e){
 		throw e;
 	}

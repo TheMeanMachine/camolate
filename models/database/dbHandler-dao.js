@@ -226,6 +226,8 @@ const arrayOfQueries = async (array, connection) => {
 		for(let i = 0; i < array.length; i++){
             await connection.query(array[i]);
 		}
+
+        return {message:"queried successfully"};
 	}catch (error) {
 		throw error;
 	}
