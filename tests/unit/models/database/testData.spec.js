@@ -3,14 +3,15 @@
 const testModel = require('../../../../models/database/testData');
 const testDB = require('../../../prepareTestDB');
 
-beforeEach(async done => {
-	await testDB.prepareTestDatabase();
-	done();
-});
+//Code for test database
+// beforeEach(async (done) => {
+// 	await testDB.prepareTestDatabase();
+// 	done();
+// });
 
-afterEach(() => {
-	testDB.clear();
-});
+// afterEach(() => {
+// 	testDB.clear();
+// });
 
 describe('associateAuthorsTo', () => {
 
