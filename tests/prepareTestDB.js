@@ -46,6 +46,8 @@ exports.prepareTestDatabase = async() => {
 		throw e;
 	}
 }
+	const testData = require("../models/database/testData.js");//loaded after mock
+	await testData.mockData();
 
 exports.clear = () => {
     jest.resetAllMocks();
