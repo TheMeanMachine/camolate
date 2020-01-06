@@ -107,17 +107,23 @@ const data = {
  * @param  {array} listToCheck array of object with attributes author & published
  * @param  {array} listToAddTo array to list the associations
  */
-exports.associateAuthorsTo = (listToCheck, listToAddTo, nameOfID) => {
-    for(let i = 0; i < listToCheck.length; i++){
-        const obj = listToCheck[i];
-        if(obj.published === 1) return;//if published, don't associate
-        const name = Object.keys({listToAddTo})[0];
-        const itemToAdd = {
-            userID: obj.authorID
+exports.associateAuthorsTo = async (listToCheck, listToAddTo, nameOfID) => {
+    try{
+        for(let i = 0; i < listToCheck.length; i++){
+            const obj = listToCheck[i];
+            if(obj.published === 1) continue;//if published, don't associate
+            const name = Object.keys({listToAddTo})[0];
+            const itemToAdd = {
+                userID: obj.authorID
+            };
+            itemToAdd[nameOfID] = i + 1;
+            listToAddTo.push(itemToAdd);
         }
-        itemToAdd[nameOfID] = i + 1;
-        listToAddTo.push(itemToAdd);
+        return {message: "Operation was successfully completed"};
+    }catch(err){
+        throw err;
     }
+    
 }
 
 /**
@@ -126,7 +132,7 @@ exports.associateAuthorsTo = (listToCheck, listToAddTo, nameOfID) => {
  * @param  {string} name of object to find
  * @return {int} index of obj in array, -1 if not found
  */
-const indexObjInArray_byName = (array_of_obj, name) => {
+exports.indexObjInArray_byName = (array_of_obj, name) => {
     for(let i = 0; i < array_of_obj.size(); i++){
         if(array_of_obj[0].name === name) return i
     }
@@ -134,5 +140,5 @@ const indexObjInArray_byName = (array_of_obj, name) => {
 }
 
 exports.mockData = async () => {
-
+    return;
 }
