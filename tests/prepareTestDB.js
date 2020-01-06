@@ -1,7 +1,8 @@
-'use strict'
+"use strict";
 
 const mysql = require("promise-mysql");
 const testInfo = require("./config");
+
 
 /**
  * Takes two objects and replaces obj1 values with obj2 if set
@@ -19,37 +20,35 @@ const setTestConfig = () => {
 	const info = require("../config");
 	const testInfoOverridden = joinObjects(info.database, testInfo.database);
 	jest
-		.doMock('../config', () => {
+		.doMock("../config", () => {
 			return {database: testInfoOverridden};
 		});
-}
+};
 
 exports.prepareTestDatabase = async() => {
-	try{
-		setTestConfig();
-		
-		const info = require("../config");
-		const connectionNoDB = await mysql.createConnection({host: info.database.host, user: info.database.user, password: info.database.password});
-		const dropDatabase = "DROP DATABASE IF EXISTS `"+ info.database.database + "`";
-		await connectionNoDB.query(dropDatabase);
+	
+	setTestConfig();
+	
+	const info = require("../config");
+	const connectionNoDB = await mysql.createConnection({host: info.database.host, user: info.database.user, password: info.database.password});
+	const dropDatabase = "DROP DATABASE IF EXISTS `"+ info.database.database + "`";
+	await connectionNoDB.query(dropDatabase);
 
-		const createDatabase = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
-		await connectionNoDB.query(createDatabase);
+	const createDatabase = "CREATE DATABASE IF NOT EXISTS `"+ info.database.database + "`";
+	await connectionNoDB.query(createDatabase);
 
-		connectionNoDB.end(); //Close the connection
-		
-		const database = require("../models/database/dbHandler-dao.js");//loaded after mock
-		await database.createTables();
-
-		return;
-	}catch(e){
-		throw e;
-	}
-}
+	connectionNoDB.end(); //Close the connection
+	
+	const database = require("../models/database/dbHandler-dao.js");//loaded after mock
+	await database.createTables();
 	const testData = require("../models/database/testData.js");//loaded after mock
 	await testData.mockData();
 
+	return;
+	
+};
+
 exports.clear = () => {
-    jest.resetAllMocks();
-    jest.restoreAllMocks();//todo: change this to specific
-}
+	jest.resetAllMocks();
+	jest.restoreAllMocks();//todo: change this to specific
+};

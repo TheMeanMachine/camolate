@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 const testModel = require('../../../../models/database/testData');
 const testDB = require('../../../prepareTestDB');
@@ -38,7 +38,7 @@ describe('associateAuthorsTo', () => {
 	        },
 		]
 		const listToAddTo = []
-		await testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
+		testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
 
 		expect(listToAddTo).toEqual([
 			{
@@ -62,7 +62,7 @@ describe('associateAuthorsTo', () => {
 		
 		const category = [
 			{
-	            name: "Dried Fruit",
+				name: "Dried Fruit",
 	            published: 1,
 	            authorID: 2,
 	            levelID: 4//bad
@@ -81,7 +81,7 @@ describe('associateAuthorsTo', () => {
 	        },
 		]
 		const listToAddTo = []
-		await testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
+		testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
 
 		expect(listToAddTo).toEqual([]);
 
@@ -112,7 +112,7 @@ describe('associateAuthorsTo', () => {
 	        },
 		];
 		const listToAddTo = [];
-		await testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
+		testModel.associateAuthorsTo(category, listToAddTo, "categoryID");
 
 		expect(listToAddTo).toEqual([
 			{
