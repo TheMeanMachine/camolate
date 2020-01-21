@@ -41,7 +41,7 @@ exports.prepareTestDatabase = async() => {
 	
 	const database = require("../models/database/dbHandler-dao.js");//loaded after mock
 	await database.createTables();
-	const testData = require("../models/database/testData.js");//loaded after mock
+	const testData = require("./testData.js");//loaded after mock
 	await testData.mockData();
 
 	return;

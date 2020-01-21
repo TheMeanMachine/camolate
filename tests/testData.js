@@ -1,5 +1,5 @@
 "use strict";
-const helpers = require("../../modules/databaseHelpers"); 
+const helpers = require("../modules/databaseHelpers"); 
 const mysql = require("promise-mysql");
 
 const prepareData = () => {
@@ -21,6 +21,7 @@ const prepareData = () => {
 				allowance: 50
 			},
 			{
+	
 				name: "'Fair'",
 				allowance: 100
 			},

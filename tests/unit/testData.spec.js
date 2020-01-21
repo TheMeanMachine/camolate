@@ -1,17 +1,17 @@
 "use strict";
 
-const testModel = require('../../../../models/database/testData');
-const testDB = require('../../../prepareTestDB');
+const testModel = require('../testData');
+const testDB = require('../prepareTestDB');
 
 //Code for test database
-// beforeEach(async (done) => {
-// 	await testDB.prepareTestDatabase();
-// 	done();
-// });
+beforeEach(async (done) => {
+	await testDB.prepareTestDatabase();
+	done();
+});
 
-// afterEach(() => {
-// 	testDB.clear();
-// });
+afterEach(() => {
+	testDB.clear();
+});
 
 describe('associateAuthorsTo', () => {
 
